@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="https://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+          integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+</head>
+<body>
+<div class="container">
+    <h1>Product Page</h1>
+    <a href="/planet/add" class="btn btn-success">Yangi Planet Qo'shish</a>
+    <a href="/planet/back" class="btn btn-success">Menu</a>
+
+    <table class="table table-hover">
+        <thead>
+        <tr>
+            <th>Id</th>
+            <th>Name</th>
+            <th>Galactic</th>
+            <th>Operations</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:each=" planet,i : ${list}">
+            <td th:text="${i.index+1}"></td>
+            <td th:text="${planet.name}"></td>
+            <td th:text="${planet.galactic.name}"></td>
+            <td>
+                <a class="btn btn-warning" th:href="${'/planet/edit/'+planet.id}">Edit</a>
+                <a class="btn btn-danger" th:href="${'/planet/delete/'+planet.id}">Delete</a>
+            </td>
+        </tr>
+        </tbody>
+    </table>
+</div>
+
+</body>
+</html>
